@@ -19,12 +19,40 @@ class eisController extends Controller
 
     public function show(Request $request)
     {
-        return view('eis.eis');
+        $centers = $this->get_maiwp_center_dept();
+
+        if(!empty($request->changedept)){
+
+            $department = DB::table('sysdb.department')
+                            ->where('compcode', session('compcode'))
+                            ->where('deptcode', $request->changedept);
+
+            if($department->exists()){
+                $request->session()->put('dept', $department->first()->deptcode);
+                $request->session()->put('dept_desc', $department->first()->description);
+            }
+        }
+
+        return view('eis.eis',compact('centers'));
     }
 
 	public function reveis(Request $request)
     {
-        return view('eis.reveis');
+        $centers = $this->get_maiwp_center_dept();
+
+        if(!empty($request->changedept)){
+
+            $department = DB::table('sysdb.department')
+                            ->where('compcode', session('compcode'))
+                            ->where('deptcode', $request->changedept);
+
+            if($department->exists()){
+                $request->session()->put('dept', $department->first()->deptcode);
+                $request->session()->put('dept_desc', $department->first()->description);
+            }
+        }
+
+        return view('eis.reveis',compact('centers'));
     }
 
     public function table(Request $request){
@@ -165,6 +193,20 @@ class eisController extends Controller
 
     public function dashboard(Request $request)
     {
+        $centers = $this->get_maiwp_center_dept();
+
+        if(!empty($request->changedept)){
+
+            $department = DB::table('sysdb.department')
+                            ->where('compcode', session('compcode'))
+                            ->where('deptcode', $request->changedept);
+
+            if($department->exists()){
+                $request->session()->put('dept', $department->first()->deptcode);
+                $request->session()->put('dept_desc', $department->first()->description);
+            }
+        }
+
         $month = 6;
         $year = 2021;
         $ip_rev = DB::table('hisdb.patsumepis')
@@ -224,7 +266,7 @@ class eisController extends Controller
             array_push($groupdesc_val,$value->totalsum);
         }
 
-        return view('eis.dashboard',compact('ip_month','op_month','ip_month_epis','op_month_epis','groupdesc','groupdesc_val_op','groupdesc_val_ip','groupdesc_cnt_op','groupdesc_cnt_ip','groupdesc_val'));
+        return view('eis.dashboard',compact('centers','ip_month','op_month','ip_month_epis','op_month_epis','groupdesc','groupdesc_val_op','groupdesc_val_ip','groupdesc_cnt_op','groupdesc_cnt_ip','groupdesc_val'));
     }
 
     public function getQueries($builder){

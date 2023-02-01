@@ -18,7 +18,7 @@ class DieteticCareNotesController extends defaultController
 
     public function show(Request $request)
     {   
-        return view('hisdb.dieteticCareNotes.dieteticCareNotes');
+        return view('patientcare.hisdb.dieteticCareNotes.dieteticCareNotes');
     }
 
     public function table(Request $request)

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\defaultController;
 use stdClass;
 use DB;
 use Carbon\Carbon;
+use App\Http\Controllers\defaultController;
 
 class physioController extends defaultController
 {   
@@ -18,7 +18,7 @@ class physioController extends defaultController
 
     public function show(Request $request)
     {   
-        return view('hisdb.phys.phys');
+        return view('patientcare.hisdb.phys.phys');
     }
 
     public function table(Request $request)

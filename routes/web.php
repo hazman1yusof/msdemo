@@ -104,6 +104,11 @@ Route::get('/doctornote/table','DoctornoteController@table')->name('doctornote_r
 Route::post('/doctornote/form','DoctornoteController@form');
 Route::post('/doctornote_transaction_save', "DoctornoteController@transaction_save");
 
+//case note
+Route::get('/casenote','CasenoteController@index');
+Route::get('/casenote/table','CasenoteController@table');
+Route::post('/casenote/form','CasenoteController@form');
+Route::post('/casenote_transaction_save', "CasenoteController@transaction_save");
 
 //// Dietetic Care Notes page ///
 Route::get('/dieteticCareNotes','DieteticCareNotesController@show');

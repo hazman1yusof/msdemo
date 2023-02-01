@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-
+	$('#formphys_ncase .ui.checkbox').checkbox();
 	disableForm('#formphys_ncase');
 
 	$("#new_phys_ncase").click(function(){
@@ -157,7 +157,6 @@ function button_state_phys_ncase(state){
 			break;
 		case 'wait':
 			hide_tran_button_phys(false);
-			hide_card_button(false);
 			// $("#toggle_phys_ncase").attr('data-toggle','collapse');
 			$("#save_phys_ncase,#cancel_phys_ncase").attr('disabled',false);
 			$('#edit_phys_ncase,#new_phys_ncase').attr('disabled',true);
@@ -167,6 +166,7 @@ function button_state_phys_ncase(state){
 }
 
 function empty_currphys_ncase(){
+	console.log('sdsd 2nd');
 	button_state_phys_ncase('empty');
 	$("#formphys_ncase input[type=radio][value=no]").prop("checked", true); 
 	emptyFormdata_div("#formphys_ncase");

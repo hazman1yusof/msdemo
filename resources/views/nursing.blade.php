@@ -1,7 +1,4 @@
 <div class="ui segments" style="position: relative;">
-    <div class="ui inverted dimmer" id="loader_nursing">
-       <div class="ui large text loader">Loading</div>
-    </div>
     <div class="ui secondary segment bluecloudsegment">
         NURSING
         <div class="ui small blue icon buttons" id="btn_grp_edit_ti" style="position: absolute;
@@ -14,48 +11,12 @@
           <button class="ui button" id="save_ti"><span class="fa fa-save fa-lg"></span> Save</button>
           <button class="ui button" id="cancel_ti"><span class="fa fa-ban fa-lg"></span> Cancel</button>
         </div>
-
-        <div class="three wide column" style="position: absolute;
-            left: 10px;
-            top: 60px;
-            overflow-y: auto;
-            max-height: 70vh;">
-            <div class="ui segment"> 
-                <div class="field">
-                    <div class="ui radio checkbox checked pastcurr_nurse">
-                        <input type="radio" name="toggle_type_nurse" checked="" tabindex="0" class="hidden" id="current_nurse" value="current" checked>
-                        <label for="current_nurse">Current Month</label>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui radio checkbox pastcurr_nurse">
-                        <input type="radio" name="toggle_type_nurse" tabindex="0" class="hidden" id="past_nurse" value="past" >
-                        <label for="past_nurse">Past History</label>
-                    </div>
-                </div>
-            </div>
-            <table id="nursing_date_tbl" class="ui celled table" style="min-width: 200px; max-height: 60vh;">
-                <thead>
-                    <tr>
-                        <th class="scope">mrn</th>
-                        <th class="scope">episno</th>
-                        <th class="scope">Date</th>
-                        <th class="scope">adduser</th>
-                        <th class="scope">adddate</th>
-                        <th class="scope">recordtime</th>
-                        <th class="scope">type</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
     </div>
 
     <div class="ui segment">
-      <div class="ui grid">
-        <form id="formTriageInfo" class="right floated ui form thirteen wide column">
+        <form id="formTriageInfo" class="ui form">
             <input id="mrn_ti" name="mrn_ti" type="hidden">
             <input id="episno_ti" name="episno_ti" type="hidden">
-            <input id="arrival_date_ti" name="arrival_date_ti" type="hidden">
 
             <div class="ui grid">
 
@@ -66,27 +27,49 @@
                             <div class="inline fields">
                                 <div class="field">
                                     <label>Time</label>
-                                    <input id="admwardtime" name="admwardtime" type="time" required>
+                                    <input id="admwardtime" name="admwardtime" type="time">
                                 </div>
                                 <div class="field">
                                     <label>Date</label>
-                                    <input id="reg_date" name="reg_date" type="date" rdonly required>
+                                    <input id="reg_date" name="reg_date" type="date" rdonly>
                                 </div>
+                                <div class="field">
+                                    <label>Triage Color Zone</label>
+                                    <div class="ui action input">
+                                        <input id="triagecolor" name="triagecolor" type="text">
+                                        <a class="ui icon blue button"><i class="fa fa-ellipsis-h"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label>Chief Complain</label>
+                                <textarea id="admreason" name="admreason" type="text" rows="4"  data-validation="required" data-validation-error-msg-required="Please enter information."></textarea>
                             </div>
 
                             <div class="field">
                                 <label>Medical History</label>
-                                <textarea id="medicalhistory" name="medicalhistory" type="text"></textarea>
+                                <textarea id="medicalhistory" name="medicalhistory" type="text" rows="4"></textarea>
                             </div>
 
                             <div class="field">
                                 <label>Surgical History</label>
-                                <textarea id="surgicalhistory" name="surgicalhistory" type="text"></textarea>
+                                <textarea id="surgicalhistory" name="surgicalhistory" type="text" rows="4" ></textarea>
+                            </div>
+
+                            <div class="field">
+                                <label>Family Medical History</label>
+                                <textarea id="familymedicalhist" name="familymedicalhist" type="text" rows="4" ></textarea>
                             </div>
 
                             <div class="field">
                                 <label>Current Medication</label>
-                                <textarea id="currentmedication" name="currentmedication" type="text"></textarea>
+                                <textarea id="currentmedication" name="currentmedication" type="text" rows="4" ></textarea>
+                            </div>
+
+                            <div class="field">
+                                <label>Diagnosis</label>
+                                <textarea id="diagnosis" name="diagnosis" type="text" rows="4" ></textarea>
                             </div>
                         </div>
 
@@ -99,17 +82,37 @@
                                         <tr>
                                             <td><input type="checkbox" id="allergydrugs" name="allergydrugs" value="1"></td>
                                             <td><label for="allergydrugs">Drugs</label></td>
-                                            <td><textarea id="drugs_remarks" name="drugs_remarks" type="text"></textarea></td>
+                                            <td><textarea id="drugs_remarks" name="drugs_remarks" type="text" rows="3"></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="allergyplaster" name="allergyplaster" value="1"></td>
+                                            <td><label for="allergyplaster">Plaster</label></td>
+                                            <td><textarea id="plaster_remarks" name="plaster_remarks" type="text" rows="3"></textarea></td>
                                         </tr>
                                         <tr>
                                             <td><input type="checkbox" id="allergyfood" name="allergyfood" value="1"></td>
                                             <td><label for="allergyfood">Food</label></td>
-                                            <td><textarea id="food_remarks" name="food_remarks" type="text"></textarea></td>
+                                            <td><textarea id="food_remarks" name="food_remarks" type="text" rows="3"></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="allergyenvironment" name="allergyenvironment" value="1"></td>
+                                            <td><label for="allergyenvironment">Environment</label></td>
+                                            <td><textarea id="environment_remarks" name="environment_remarks" type="text" rows="3"></textarea></td>
                                         </tr>
                                         <tr>
                                             <td><input type="checkbox" id="allergyothers" name="allergyothers" value="1"></td>
                                             <td><label for="allergyothers">Others</label></td>
-                                            <td><textarea id="others_remarks" name="others_remarks" type="text"></textarea></td>
+                                            <td><textarea id="others_remarks" name="others_remarks" type="text" rows="3"></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="allergyunknown" name="allergyunknown" value="1"></td>
+                                            <td><label for="allergyunknown">Unknown</label></td>
+                                            <td><textarea id="unknown_remarks" name="unknown_remarks" type="text" rows="3"></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="allergynone" name="allergynone" value="1"></td>
+                                            <td><label for="allergynone">None</label></td>
+                                            <td><textarea id="none_remarks" name="none_remarks" type="text" rows="3"></textarea></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -133,26 +136,20 @@
                                                 <label>Temperature</label>
                                                 <div class="ui right labeled input">
                                                   <input type="text" onKeyPress="if(this.value.length==6) return false;" id="vs_temperature" name="vs_temperature">
-                                                  <div class="ui basic label mylabel">°C</div>
+                                                  <div class="ui basic label">°C</div>
                                                 </div>
                                             </div>
 
                                             <div class="field eight wide column" style="margin:0px; padding: 3px 14px 0px 14px;">
                                                 <label>Pulse Rate</label>
-                                                <div class="ui right labeled input">
-                                                    <input type="text" onKeyPress="if(this.value.length==6) return false;" id="vs_pulse" name="vs_pulse">
-                                                  <div class="ui basic label mylabel">bpm</div>
-                                                </div>
+                                                <input type="text" onKeyPress="if(this.value.length==6) return false;" id="vs_pulse" name="vs_pulse">
                                             </div>
                                         </div>
 
                                         <div class="ui grid">
                                             <div class="field eight wide column" style="margin:0px; padding: 3px 14px 0px 14px;">
                                                 <label>Respiration</label>
-                                                <div class="ui right labeled input">
-                                                    <input type="text" onKeyPress="if(this.value.length==6) return false;" id="vs_respiration" name="vs_respiration">
-                                                  <div class="ui basic label mylabel">/minute</div>
-                                                </div>
+                                                <input type="text" onKeyPress="if(this.value.length==6) return false;" id="vs_respiration" name="vs_respiration">
                                             </div>
 
                                             <div class="field eight wide column" style="margin:0px; padding: 3px 14px 0px 14px;">
@@ -160,7 +157,7 @@
                                                 <div class="ui right labeled input">
                                                   <input type="text" onKeyPress="if(this.value.length==6) return false;" id="vs_bp_sys1" name="vs_bp_sys1" style="width:25%">
                                                   <input type="text" onKeyPress="if(this.value.length==6) return false;" id="vs_bp_dias2" name="vs_bp_dias2" style="width:25%">
-                                                  <div class="ui basic label mylabel">mmHg</div>
+                                                  <div class="ui basic label">mmHg</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -169,26 +166,34 @@
                                             <div class="field eight wide column" style="margin:0px; padding: 3px 14px 0px 14px;">
                                                 <label>Height</label>
                                                 <div class="ui right labeled input">
-                                                  <input type="text" onKeyPress="if(this.value.length==6) return false;" id="height" name="vs_height">
-                                                  <div class="ui basic label mylabel">CM</div>
+                                                  <input type="text" onKeyPress="if(this.value.length==6) return false;" id="height" name="height">
+                                                  <div class="ui basic label">CM</div>
                                                 </div>
                                             </div>
 
                                             <div class="field eight wide column" style="margin:0px; padding: 3px 14px 0px 14px;">
                                                 <label>Weight</label>
                                                 <div class="ui right labeled input">
-                                                  <input type="text" onKeyPress="if(this.value.length==6) return false;" id="weight" name="vs_weight">
-                                                  <div class="ui basic label mylabel">KG</div>
+                                                  <input type="text" onKeyPress="if(this.value.length==6) return false;" id="weight" name="weight">
+                                                  <div class="ui basic label">KG</div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="ui grid">
+                                            <div class="field eight wide column" style="margin:0px; padding: 3px 14px 0px 14px;">
+                                                <label>GXT</label>
+                                                <div class="ui right labeled input">
+                                                  <input type="text" onKeyPress="if(this.value.length==6) return false;" id="vs_gxt" name="vs_gxt">
+                                                  <div class="ui basic label">mmOL</div>
+                                                </div>
+                                            </div>
+
                                             <div class="field eight wide column" style="margin:0px; padding: 3px 14px 14px 14px;">
                                                 <label>Pain Score</label>
                                                 <div class="ui right labeled input">
                                                   <input type="text" onKeyPress="if(this.value.length==6) return false;" id="vs_painscore" name="vs_painscore">
-                                                  <div class="ui basic label mylabel">/10</div>
+                                                  <div class="ui basic label">/10</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -219,6 +224,12 @@
                                                  Trolley 
                                             </label>
                                         </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="moa_others" name="moa_others" value="1">
+                                                 Others 
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -236,13 +247,13 @@
                                         <div class="field">
                                             <label>
                                                 <input type="checkbox" id="loc_semiconscious" name="loc_semiconscious" value="1">
-                                                Semi Conscious 
+                                                 SemiConscious 
                                             </label>
                                         </div>
                                         <div class="field">
                                             <label>
                                                 <input type="checkbox" id="loc_unconscious" name="loc_unconscious" value="1">
-                                                 Unconscious 
+                                                 UnConscious 
                                             </label>
                                         </div>
                                     </div>
@@ -280,6 +291,138 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="eight wide column ">
+                                <div class="ui segments">
+                                    <div class="ui secondary segment">EMOTIONAL STATUS</div>
+                                    <div class="ui segment">
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="es_calm" name="es_calm" value="1">
+                                                 Calm 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="es_anxious" name="es_anxious" value="1">
+                                                 Anxious 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="es_distress" name="es_distress" value="1">
+                                                 Distress 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="es_depressed" name="es_depressed" value="1">
+                                                 Depressed 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="es_irritable" name="es_irritable" value="1">
+                                                 Irritable 
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sixteen wide column ">
+                                <div class="ui segments">
+                                    <div class="ui secondary segment">FALL RISK ASSESSMENT</div>
+                                    <div class="ui segment">
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="fra_prevfalls" name="fra_prevfalls" value="1">
+                                                 Previous falls 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="fra_age" name="fra_age" value="1">
+                                                 Age 60 years or older 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="fra_physicalLimitation" name="fra_physicalLimitation" value="1">
+                                                 Physical limitation-visual & mobility 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="fra_neurologicaldeficit" name="fra_neurologicaldeficit" value="1">
+                                                 Neurological deficit-confusion & disorientation 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="fra_dizziness" name="fra_dizziness" value="1">
+                                                 Dizziness associated with drugs 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="fra_cerebralaccident" name="fra_cerebralaccident" value="1">
+                                                 Cerebral Vascular Accident 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="fra_notatrisk" name="fra_notatrisk" value="1">
+                                                 Not at risk 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="fra_atrisk" name="fra_atrisk" value="1">
+                                                 At risk
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sixteen wide column ">
+                                <div class="ui segments">
+                                    <div class="ui secondary segment">PRESSURE SORE RISK ASSESSMENT</div>
+                                    <div class="ui segment">
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="psra_incontinent" name="psra_incontinent" value="1">
+                                                 Incontinent 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="psra_immobility" name="psra_immobility" value="1">
+                                                 Immobility / Restricted mobility
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="psra_poorskintype" name="psra_poorskintype" value="1">
+                                                 Poor skin type
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="psra_notatrisk" name="psra_notatrisk" value="1">
+                                                 Not at risk 
+                                            </label>
+                                        </div>
+                                        <div class="field">
+                                            <label>
+                                                <input type="checkbox" id="psra_atrisk" name="psra_atrisk" value="1">
+                                                 At risk 
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         </div>
                     </div>
@@ -296,6 +439,104 @@
 
                 <div class="sixteen wide column">
                     <div class="ui segments">
+                        <div class="ui secondary segment">TRIAGE PHYSICAL ASSESSMENT</div>
+                        <div class="ui segment">
+                            <div class="ui grid">
+                                <div class="four wide column">
+                                    <div class="ui segments">
+                                        <div class="ui secondary segment">SKIN CONDITION</div>
+                                        <div class="ui segment">
+                                            <div class="field">
+                                                <label>
+                                                    <input type="checkbox" id="pa_skindry" name="pa_skindry" value="1">
+                                                     Dry
+                                                </label>
+                                            </div>
+                                            <div class="field">
+                                                <label>
+                                                    <input type="checkbox" id="pa_skinodema" name="pa_skinodema" value="1">
+                                                     Odema
+                                                </label>
+                                            </div>
+                                            <div class="field">
+                                                <label>
+                                                    <input type="checkbox" id="pa_skinjaundice" name="pa_skinjaundice" value="1">
+                                                     Jaundice
+                                                </label>
+                                            </div>
+                                            <div class="field">
+                                                <label>
+                                                    <input type="checkbox" id="pa_skinnil" name="pa_skinnil" value="1">
+                                                     NIL
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="four wide column">
+                                    <div class="ui segments">
+                                        <div class="ui secondary segment">OTHERS</div>
+                                        <div class="ui segment">
+                                            <div class="field">
+                                                <label>
+                                                    <input type="checkbox" id="pa_othbruises" name="pa_othbruises" value="1">
+                                                     Bruises
+                                                </label>
+                                            </div>
+                                            <div class="field">
+                                                <label>
+                                                    <input type="checkbox" id="pa_othdeculcer" name="pa_othdeculcer" value="1">
+                                                     Decubitues Ulcer
+                                                </label>
+                                            </div>
+                                            <div class="field">
+                                                <label>
+                                                    <input type="checkbox" id="pa_othlaceration" name="pa_othlaceration" value="1">
+                                                     Laceration
+                                                </label>
+                                            </div>
+                                            <div class="field">
+                                                <label>
+                                                    <input type="checkbox" id="pa_othdiscolor" name="pa_othdiscolor" value="1">
+                                                     Discolouration
+                                                </label>
+                                            </div>
+                                            <div class="field">
+                                                <label>
+                                                    <input type="checkbox" id="pa_othnil" name="pa_othnil" value="1">
+                                                     NIL
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="eight wide column">
+                                    <div class="ui segments">
+                                        <div class="ui secondary segment">Notes:</div>
+                                        <div class="ui segment">
+                                            <textarea id="pa_notes" name="pa_notes" type="text" rows="4" ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sixteen wide column">
+                    <div class="ui segments">
+                        <div class="ui secondary segment">EXAMINATION</div>
+                        <div class="ui segment" id="jqGridExamTriage_c">
+                            <table id="jqGridExamTriage" class="table table-striped"></table>
+                            <div id="jqGridPagerExamTriage"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sixteen wide column">
+                    <div class="ui segments">
                         <div class="ui secondary segment">ADDITIONAL NOTES</div>
                         <div class="ui segment" id="jqGridAddNotesTriage_c">
                             <table id="jqGridAddNotesTriage" class="table table-striped"></table>
@@ -306,6 +547,5 @@
             </div>
 
         </form>
-      </div>
     </div>
 </div>

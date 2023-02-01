@@ -312,6 +312,7 @@ var phys_date_tbl = $('#phys_date_tbl').DataTable({
 });
 
 function empty_currphys(){
+	console.log('sdsd');
 	emptyFormdata_div("#formphys",['#mrn_phys','#episno_phys']);
 	empty_currphys_ncase();
 	$('.ui.checkbox.box').checkbox('set unchecked');
