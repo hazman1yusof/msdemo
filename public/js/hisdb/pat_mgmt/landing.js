@@ -312,7 +312,7 @@ $(document).ready(function() {
         var rng = $('#user_dept').val()+'_'+randomString(32,'#aA');
         $("#patientBox").data('scantype','mykad');
         $("#rng").val(rng);
-        $("#mykadFPiframe").attr('src','http://localhost/mycard/public/mykad?rng='+rng);
+        $("#mykadFPiframe").attr('src','http://localhost:8080/mycard/public/mykad?rng='+rng);
         // $("#mykadFPiframe").get(0).contentWindow.setscantype('mykad');
         $('#mdl_biometric').modal('show');
     });
