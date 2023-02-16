@@ -69,9 +69,9 @@ return [
             'root'   => public_path() . '/uploads',
         ],
 
-        'webhosting_uploads' => [
+        'msdemo_uploads' => [
             'driver' => 'local',
-            'root'   => base_path().'/../public_html/uploads',
+            'root'   => 'C:/laragon/www/msdemo/uploads',
         ],
 
         's3' => [
